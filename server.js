@@ -7,7 +7,8 @@ import multer from 'multer';
 import rateLimit from 'express-rate-limit';
 import { db, all, one, run, transaction } from './db.js';
 import { extractPdfText, isPdfFile } from './pdf.js';
-import { extractKenyanPhones, maskPhone } from './phone.js';
+import { maskPhone } from './phone.js';
+import { decodeKenyanPhones } from './number-agent.js';
 import { requestPayment, verifyWebhook } from './payhero.js';
 
 const app = express();
@@ -41,7 +42,7 @@ app.post('/api/imports', requireOperator, upload.single('pdf'), async (request, 
   try {
     if (!request.file || !isPdfFile(request.file)) return response.status(400).json({ error: 'A valid PDF file is required' });
     const text = await extractPdfText(request.file);
-    const { numbers, invalidCount, duplicateCount } = extractKenyanPhones(text);
+    const { numbers, invalidCount, duplicateCount } = decodeKenyanPhones(text);
     const importId = id();
     const actor = operator(request);
     await transaction(async () => {
