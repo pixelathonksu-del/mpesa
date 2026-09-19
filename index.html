@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kijani Pay operator workspace for sequential M-Pesa payment requests.">
+  <title>Kijani Pay | Payment operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand"><span class="brand-mark">K</span><span>Kijani <em>Pay</em></span></div>
+      <div class="workspace-switcher"><span class="avatar">JK</span><span><strong>Jenga Kenya Ltd.</strong><small>Operations workspace</small></span><span class="chevron">⌄</span></div>
+      <nav class="nav-group">
+        <p class="nav-label">Workspace</p>
+        <button class="nav-item active" data-page="dashboard"><span>▦</span>Overview</button>
+        <button class="nav-item" data-page="request"><span>＋</span>Request payment</button>
+        <button class="nav-item" data-page="sessions"><span>◷</span>Payment sessions</button>
+        <button class="nav-item" data-page="customers"><span>♙</span>Customers</button>
+        <button class="nav-item" data-page="transactions"><span>↗</span>Transactions</button>
+        <button class="nav-item" data-page="reports"><span>▤</span>Reports</button>
+      </nav>
+      <nav class="nav-group nav-bottom">
+        <p class="nav-label">Manage</p>
+        <button class="nav-item" data-page="settings"><span>⚙</span>Settings</button>
+        <button class="nav-item" data-page="integration"><span>↔</span>PayHero integration</button>
+        <button class="nav-item" data-page="audit"><span>✓</span>Audit logs</button>
+      </nav>
+      <div class="sidebar-footer"><span class="status-dot"></span><span><strong>PayHero connected</strong><small>Last checked just now</small></span></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><button class="mobile-menu" aria-label="Open navigation">☰</button><div class="breadcrumbs"><span>Jenga Kenya Ltd.</span><b>/</b><strong id="breadcrumb">Overview</strong></div><div class="top-actions"><button class="icon-button" aria-label="Notifications">♧<i></i></button><div class="top-avatar">JK</div></div></header>
+      <div id="app" class="page-content"></div>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
