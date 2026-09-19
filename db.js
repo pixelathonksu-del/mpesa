@@ -153,7 +153,7 @@ export async function transaction(callback) {
 
   db.exec('BEGIN IMMEDIATE');
   try {
-    const result = callback();
+    const result = await callback();
     db.exec('COMMIT');
     return result;
   } catch (error) {
